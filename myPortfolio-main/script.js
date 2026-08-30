@@ -29,4 +29,18 @@ function eraseRole() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", typeRole);
+document.addEventListener("DOMContentLoaded", () => {
+  typeRole();
+
+  const navLinks = document.querySelectorAll(".nav-link");
+  const navbarCollapse = document.getElementById("collapsibleNavbar");
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+        bsCollapse.hide();
+      }
+    });
+  });
+});
